@@ -188,8 +188,10 @@ label {
     width: 70%;
     margin-top: 0;
   }
-  mn{
+  .mn{
     width: 80%;
     height: auto;
+    justify-items: center;
+    align-items: center;
   }
 } 
