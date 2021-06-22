@@ -193,6 +193,7 @@ label {
   input[type=submit]{
     width: 80%;
     float: center;
+    margin-top: 40px; 
   }
   .mn{
     width: 80%;
