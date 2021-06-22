@@ -186,8 +186,9 @@ label {
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {
     width: 70%;
+    float: center;
     /* margin-top: 0; */
-    float: center
+    
   }
   .mn{
     width: 80%;
