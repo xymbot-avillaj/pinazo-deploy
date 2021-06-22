@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <title>
+            Admin
+        </title>
+        <div id="mySidenav" class="topav">
+            <a href="{% url 'index' %}">Producción</a>
+            <a href="{% url 'user' %}">Usuarios</a>
+            <a href="http://localhost:3000/d/22NgU26Mk/pinazo?orgId=1" target="_blank">Visualizador</a>
+            <img class="log" src="{% static 'img/user1.png' %}" >
+            <p class="us">User  </p>  
+          </div>        
+    </head>
+    <body style="text-align: center;">
+        <div id="main">
+            <div class="header">
+                <header>Producción</header>
+              </div>  
+            {% block Production %}
+            <form action="." method="POST"> {% csrf_token %}
+                <div class="fdat" name="article">
+                    <p>Código: {{ form.article }} </p>
+                </div>
+                <div class="fdat">
+                   <p> Prensa: {{ form.machine }}</p>
+                </div>
+                <div class="fdat" name="pieces">
+                   <p> Total de piezas: {{ form.pieces }} </p>
+                </div>
+                <div class="fdat">
+                    <p> Fecha de inicio: {{ form.date_from }}</p>
+                </div>
+                <div class="fdat">
+                    <p> Fecha de fin: {{ form.date_to }} </p>
+                </div>
+                <input type="submit" value="Actualizar" id="sub">                       
+            </form>            
+            {% endblock %} 
+            
+
+            {% block Table %}
+            <div>                   
+                <table border="1">
+                    <tr>
+                        <th>Código</th>
+                        <th>Prensa</th>
+                        <th>Total de piezas</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de fin</th>
+                    </tr>
+                    {% for result in show_table %}
+                    <tr>
+                        <td>{{result.article}}</td>
+                        <td>{{result.machine}}</td>
+                        <td>{{result.pieces}}</td>
+                        <td>{{result.date_from}} </td>
+                        <td>{{result.date_to}}</td>
+                    </tr>
+                    {% endfor%}
+                </table>                
+            </div>     
+            {% endblock %}
+
+
+        </div>
+            <div class="bann">
+                <img src="{% static 'img/logo.jpg' %}" >
+              </div>
+    </body>
+</html>

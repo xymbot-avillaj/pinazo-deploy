@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <title>
+            Admin
+        </title>
+        <div class="header">
+            <header>Usuarios</header>
+          </div>
+    </head>
+    <body style="text-align: center;">
+        <div id="mySidenav" class="topav">
+            <a href="{% url 'index' %}">Administracion</a>
+            <a href="{% url 'user' %}">Usuarios</a>
+            <a href="#">Visualizador</a>
+            <img class="log" src="{% static 'img/user1.png' %}" >
+            <p class="us">User  </p>   >
+          </div>
+        <div id="main">
+            <form id="form-data">
+                <input type="text" name="nuevo usuario" id="username-field" class="login-form-field" placeholder="usuario">
+                <input type="pasword" name="password" id="password-field" class="login-form-field" placeholder="contraseña">
+                <input type="enviar" value="Login" id="login-form-submit">
+            </form>
+        </div>
+            <div class="bann">
+                <img src="{% static 'img/logo.jpg' %}" >
+              </div>
+    </body>
+</html>

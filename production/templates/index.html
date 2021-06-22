@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <title>
+            Admin
+        </title>
+        <div id="mySidenav" class="topav">
+            <a href="{% url 'index' %}">Producción</a>
+            <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1" target="_blank">Visualizador</a>
+            <img class="log" src="{% static 'img/user1.png' %}" >
+            <p class="us">User  </p>  
+          </div>        
+    </head>
+    <body style="text-align: center;">
+        <main class="mn">
+        <div class="header">
+            <header>Producción</header>
+        </div>
+        <div id="container">
+            {% block Production %}
+            <form action="." method="POST"> {% csrf_token %}
+                <div class="row">
+                    <div class="col-25">
+                        <label>Código: </label>
+                    </div>
+                    <div class="col-75">
+                        {{ form.article }} 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Prensa:</label>
+                    </div>
+                    <div class="col-75" name="pieces">
+                        {{ form.machine }}
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-25">
+                        <label> Total de piezas:</label> 
+                    </div>
+                    <div class="col-75">
+                        {{ form.total }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label> Fecha de inicio: </label>
+                    </div>
+                    <div class="col-75">
+                        {{ form.date_from }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label> Fecha de fin: </label>
+                    </div>
+                    <div class="col-75">
+                        {{ form.date_to }} 
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Actualizar" id="sub">  
+                </div>                     
+            </form>            
+            {% endblock %} 
+        </div>
+        </main>
+        <div class="cont">
+            {% block Table %}               
+                <table id="ta" style="width:95%"  > 
+                    <tr>
+                        <th>Código</th>
+                        <th>Prensa</th>
+                        <th>Total de piezas</th>
+                        <th>Fecha de inicio</th>
+                        <th>Fecha de fin</th>
+                    </tr>
+                    {% for result in show_table %}
+                    <tr>
+                        <td>{{result.article}}</td>
+                        <td>{{result.machine}}</td>
+                        <td>{{result.total}}</td>
+                        <td>{{result.date_from}} </td>
+                        <td>{{result.date_to}}</td>
+                    </tr>
+                    {% endfor%}
+                </table>                  
+            {% endblock %}
+            </div>
+            <div class="bann">
+                <img src="{% static 'img/logo.jpg' %}" >
+              </div>
+    </body>
+</html>
