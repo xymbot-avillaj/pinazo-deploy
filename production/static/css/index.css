@@ -62,7 +62,7 @@ width: 100%; /* Full width */
   background-image: linear-gradient(to  right,rgb(159, 204, 247), #1a84ca);
   color: white;
   font-size: 30px;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #form-data {
@@ -88,7 +88,7 @@ width: 100%; /* Full width */
   border-radius: 5px;
   color: white;
   font-weight: bold;
-  background-color: #05915d;
+  background-color: #1a84ca;
   cursor: pointer;
   outline: none;
 }
@@ -106,12 +106,14 @@ width: 100%; /* Full width */
   color: white;
 }
 #ta th {
-  background-color: #05915d;
+  background-color: #1a84ca;
   color: white;
   text-align: center;
+  padding: 15px;
 }
 #ta td {
   text-align: center;
+  padding: 15px;
 }
 .mn{
   width: 50%;
@@ -133,7 +135,7 @@ label {
 
 /* Style the submit button */
 #sub{
-  background-color: #04AA6D;
+  background-color: #1a84ca;
   color: white;
   padding: 12px 20px;
   border: none;

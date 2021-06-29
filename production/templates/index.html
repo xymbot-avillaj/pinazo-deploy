@@ -12,9 +12,10 @@
         </title>
         <div id="mySidenav" class="topav">
             <a href="{% url 'index' %}">Producción</a>
+            <a href="{% url 'register' %}">Usuarios</a>
             <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1" target="_blank">Visualizador</a>
             <img class="log" src="{% static 'img/user1.png' %}" >
-            <p class="us">User  </p>  
+            <span class="us"> <a href="{% url 'logout' %}"><span>{{request.user}}</span></a></span>   
           </div>        
     </head>
     <body style="text-align: center;">
@@ -81,6 +82,7 @@
                         <th>Total de piezas</th>
                         <th>Fecha de inicio</th>
                         <th>Fecha de fin</th>
+                        <th>Modificar</th>
                     </tr>
                     {% for result in show_table %}
                     <tr>
@@ -89,6 +91,7 @@
                         <td>{{result.total}}</td>
                         <td>{{result.date_from}} </td>
                         <td>{{result.date_to}}</td>
+                        <td><a id=sub href="{% url 'update' result.id %}">Modificar</a></td> 
                     </tr>
                     {% endfor%}
                 </table>                  
