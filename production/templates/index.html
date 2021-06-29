@@ -2,100 +2,191 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'css/index.css' %}">
-        <title>
-            Admin
-        </title>
-        <div id="mySidenav" class="topav">
-            <a href="{% url 'index' %}">Producción</a>
-            <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1" target="_blank">Visualizador</a>
-            <img class="log" src="{% static 'img/user1.png' %}" >
-            <p class="us">User  </p>  
-          </div>        
-    </head>
-    <body style="text-align: center;">
-        <main class="mn">
-        <div class="header">
-            <header>Producción</header>
-        </div>
-        <div id="container">
-            {% block Production %}
-            <form action="." method="POST"> {% csrf_token %}
-                <div class="row">
-                    <div class="col-25">
-                        <label>Código: </label>
-                    </div>
-                    <div class="col-75">
-                        {{ form.article }} 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label>Prensa:</label>
-                    </div>
-                    <div class="col-75" name="pieces">
-                        {{ form.machine }}
-                    </div>
-                </div>
-                <div class="row" >
-                    <div class="col-25">
-                        <label> Total de piezas:</label> 
-                    </div>
-                    <div class="col-75">
-                        {{ form.total }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label> Fecha de inicio: </label>
-                    </div>
-                    <div class="col-75">
-                        {{ form.date_from }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label> Fecha de fin: </label>
-                    </div>
-                    <div class="col-75">
-                        {{ form.date_to }} 
-                    </div>
-                </div>
-                <div class="row">
-                    <input type="submit" value="Actualizar" id="sub">  
-                </div>                     
-            </form>            
-            {% endblock %} 
-        </div>
-        </main>
-        <div class="cont">
-            {% block Table %}               
-                <table id="ta" style="width:95%"  > 
-                    <tr>
-                        <th>Código</th>
-                        <th>Prensa</th>
-                        <th>Total de piezas</th>
-                        <th>Fecha de inicio</th>
-                        <th>Fecha de fin</th>
-                    </tr>
-                    {% for result in show_table %}
-                    <tr>
-                        <td>{{result.article}}</td>
-                        <td>{{result.machine}}</td>
-                        <td>{{result.total}}</td>
-                        <td>{{result.date_from}} </td>
-                        <td>{{result.date_to}}</td>
-                    </tr>
-                    {% endfor%}
-                </table>                  
-            {% endblock %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="css/tailwind.css" rel="stylesheet">
+    <title>
+        Admin
+    </title>
+    <div id="mySidenav" class="topav">
+        <a href="{% url 'index' %}">Producción</a>
+        <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1"
+           target="_blank">Visualizador</a>
+        <img class="log" src="{% static 'img/user1.png' %}">
+        <p class="us">User </p>
+    </div>
+</head>
+<body style="text-align: center;">
+<!--<main class="mn w-2/3">-->
+<!--    <div class="header">-->
+<!--        <header>Producción</header>-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div id="container">&ndash;&gt;-->
+<!--&lt;!&ndash;        {% block Production %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <form action="." method="POST"> {% csrf_token %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-25 ">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label>Código: </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-75">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {{ form.article }}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-25">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label>Prensa:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-75" name="pieces">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {{ form.machine }}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-25">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label> Total de piezas:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-75">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {{ form.total }}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-25">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label> Fecha de inicio: </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-75">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {{ form.date_from }}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-25">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label> Fecha de fin: </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-75">&ndash;&gt;-->
+<!--&lt;!&ndash;                    {{ form.date_to }}&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="submit" value="Actualizar" id="sub">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endblock %}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--</main>-->
+
+<div class="flex items-center justify-center  mt-16 mb-8 w-11/12 md:w-10/12 lg:5/6">
+    <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-2/3">
+        <div class="flex justify-center">
+            <div class="flex">
+                <h1 class="text-gray-600 font-bold md:text-2xl text-xl mt-4">Producción</h1>
             </div>
-            <div class="bann">
-                <img src="{% static 'img/logo.jpg' %}" >
-              </div>
-    </body>
+        </div>
+
+        <div class="grid grid-cols-1 mt-5 mx-7 ">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Código</label>
+            <select class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent">
+                <option>Código 1</option>
+                <option>Código 2</option>
+                <option>Código 3</option>
+                <option>Código 4</option>
+            </select>
+        </div>
+        <div class="grid grid-cols-1 mt-5 mx-7">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Prensa</label>
+            <select class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent">
+                <option>Prensa 1</option>
+                <option>Prensa 2</option>
+                <option>Prensa 3</option>
+                <option>Prensa 4</option>
+                <option>Prensa 5</option>
+                <option>Prensa 6</option>
+                <option>Prensa 7</option>
+
+            </select>
+        </div>
+        <div class="grid grid-cols-1 mt-5 mx-7">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Número de piezas</label>
+            <input class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="number" placeholder="0" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha inicio</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="date" placeholder="Input 2" />
+            </div>
+            <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha fin</label>
+                <input class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="date" placeholder="Input 3" />
+            </div>
+        </div>
+
+        <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+            <button class='w-7/12 bg-primary hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Actualizar</button>
+        </div>
+
+    </div>
+</div>
+<div class="w-11/12 md:w-9/12 lg:w-2/3 mt-4">
+    {% block Table %}
+    <table  class="w-full table-auto">
+        <thead>
+            <tr class="bg-primary text-gray-50 uppercase text-sm leading-normal h-12 rounded-2xl">
+                <th>Código</th>
+                <th>Prensa</th>
+                <th>Total de piezas</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de fin</th>
+            </tr>
+        </thead>
+
+        {% for result in show_table %}
+        <tbody class="text-gray-600 text-sm font-light">
+            <tr class="border-b border-gray-200 bg-gray-50  hover:bg-gray-100">
+<!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.article}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">1234</td>
+                <td class="py-3 px-6 text-center whitespace-nowrap">Maquina 1</td>
+<!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.machine}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">123</td>
+<!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.total}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">12/12/2012</td>
+<!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.date_from}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">12/12/2012</td>
+<!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.date_to}}</td>-->
+            </tr>
+            <tr class="border-b border-gray-200 bg-gray-50  hover:bg-gray-100">
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.article}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">1234</td>
+                <td class="py-3 px-6 text-center whitespace-nowrap">Maquina 1</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.machine}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">123</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.total}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">12/12/2012</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.date_from}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">12/12/2012</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.date_to}}</td>-->
+            </tr>
+            <tr class="border-b border-gray-200 bg-gray-50  hover:bg-gray-100">
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.article}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">1234</td>
+                <td class="py-3 px-6 text-center whitespace-nowrap">Maquina 1</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.machine}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">123</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.total}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">12/12/2012</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.date_from}}</td>-->
+                <td class="py-3 px-6 text-center whitespace-nowrap">12/12/2012</td>
+                <!--                <td class="py-3 px-6 text-left whitespace-nowrap">{{result.date_to}}</td>-->
+            </tr>
+        </tbody>
+        {% endfor%}
+    </table>
+    {% endblock %}
+</div>
+<div class="bann">
+    <img src="{% static 'img/logo.jpg' %}">
+</div>
+</body>
 </html>
