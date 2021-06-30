@@ -43,7 +43,7 @@ def logoutUser(request):
 @login_required(login_url='login')
 def production_view(request):
     form = ProductionForm(request.POST or None)
-    show_table = ProductionTable.objects.raw('select * from public.production_production order by date_to desc')
+    show_table = ProductionTable.objects.raw("SELECT * FROM public.production_production WHERE date_from > now() AT TIME ZONE 'Europe/Madrid' AT TIME ZONE 'UTC' ORDER BY date_to desc")
     
     if form.is_valid():        
         form.save()
