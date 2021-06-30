@@ -8,12 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <link rel="stylesheet" href="../static/css/tailwind.css">
+
     <title>
         Admin
     </title>
-    <div id="mySidenav" class="topav">
+        <div id="mySidenav" class="topav">
         <a href="{% url 'index' %}">Producción</a>
         <a href="{% url 'register' %}">Usuarios</a>
+
         <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1"
            target="_blank">Visualizador</a>
         <img class="log" src="{% static 'img/user1.png' %}">
@@ -30,20 +33,21 @@
 
         <div class="grid grid-cols-1 mt-5 mx-7 ">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Código</label>
-            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent">
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w">
                 {{ form.article }}
             </div>
 
         </div>
         <div class="grid grid-cols-1 mt-5 mx-7">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Prensa</label>
-            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent">
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w">
                 {{ form.machine }}
             </div>
         </div>
         <div class="grid grid-cols-1 mt-5 mx-7">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Número de piezas</label>
-            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="number" placeholder="0" >
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w"
+                 type="number" placeholder="0">
                 {{ form.machine }}
             </div>
         </div>
@@ -51,20 +55,24 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha inicio</label>
-                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="date" placeholder="Input 2">
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w"
+                     type="date" placeholder="Input 2">
                     {{ form.date_from }}
                 </div>
             </div>
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha inicio</label>
-                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="date" placeholder="Input 2">
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w"
+                     type="date" placeholder="Input 2">
                     {{ form.date_to }}
                 </div>
             </div>
         </div>
 
         <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-            <button class='w-7/12 bg-primary hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Insertar</button>
+            <button class='w-7/12 bg-primary hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+                Insertar
+            </button>
         </div>
 
     </div>
@@ -83,22 +91,28 @@
         </tr>
         </thead>
         {% for result in show_table %}
-        <tr class="border-b border-gray-200 bg-gray-50  hover:bg-gray-100">
+        <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100 ">
             <td class="py-3 px-6 text-center whitespace-nowrap">{{result.article}}</td>
-            <td class="py-3 px-6 text-center whitespace-nowrap"> {{result.machine}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.machine}}</td>
             <td class="py-3 px-6 text-center whitespace-nowrap">{{result.total}}</td>
             <td class="py-3 px-6 text-center whitespace-nowrap">{{result.date_from}}</td>
             <td class="py-3 px-6 text-center whitespace-nowrap">{{result.date_to}}</td>
-            <td class="py-3 px-6 text-center whitespace-nowrap"><a id=mod
-                                                                   href="{% url 'update' result.id %}">Modificar</a>
+            <td class="py-3 px-6 flex align-center justify-center whitespace-nowrap">
+                <a href="{% url 'update' result.id %}">
+                    <svg class="fill-primary" height="20pt" viewBox="0 -1 401.52289 401" width="20pt"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="m370.589844 250.972656c-5.523438 0-10 4.476563-10 10v88.789063c-.019532 16.5625-13.4375 29.984375-30 30h-280.589844c-16.5625-.015625-29.980469-13.4375-30-30v-260.589844c.019531-16.558594 13.4375-29.980469 30-30h88.789062c5.523438 0 10-4.476563 10-10 0-5.519531-4.476562-10-10-10h-88.789062c-27.601562.03125-49.96875 22.398437-50 50v260.59375c.03125 27.601563 22.398438 49.96875 50 50h280.589844c27.601562-.03125 49.96875-22.398437 50-50v-88.792969c0-5.523437-4.476563-10-10-10zm0 0"/>
+                        <path d="m376.628906 13.441406c-17.574218-17.574218-46.066406-17.574218-63.640625 0l-178.40625 178.40625c-1.222656 1.222656-2.105469 2.738282-2.566406 4.402344l-23.460937 84.699219c-.964844 3.472656.015624 7.191406 2.5625 9.742187 2.550781 2.546875 6.269531 3.527344 9.742187 2.566406l84.699219-23.464843c1.664062-.460938 3.179687-1.34375 4.402344-2.566407l178.402343-178.410156c17.546875-17.585937 17.546875-46.054687 0-63.640625zm-220.257812 184.90625 146.011718-146.015625 47.089844 47.089844-146.015625 146.015625zm-9.40625 18.875 37.621094 37.625-52.039063 14.417969zm227.257812-142.546875-10.605468 10.605469-47.09375-47.09375 10.609374-10.605469c9.761719-9.761719 25.589844-9.761719 35.351563 0l11.738281 11.734375c9.746094 9.773438 9.746094 25.589844 0 35.359375zm0 0"/>
+                    </svg>
+                </a>
             </td>
         </tr>
         {% endfor%}
     </table>
     {% endblock %}
+
 </div>
-<div class="bann">
-    <img src="{% static 'img/logo.jpg' %}">
-</div>
-</body>
+
+<img class="w-36" src="{% static 'img/pinazo.png' %}">
+
 </html>

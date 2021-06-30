@@ -99,6 +99,12 @@ button, select {
 .color-primary {
     color: #00A8A4;
 }
+.fill-primary {
+    fill: #00A8A4;
+}
+.fill-secondary {
+    fill: #185073;
+}
 
 .bg-secondary {
     background-color: #185073;
@@ -107,6 +113,7 @@ button, select {
 .color-secondary {
     color: #185073;
 }
+
 
 .border-primary {
     --tw-border-opacity: 1;

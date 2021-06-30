@@ -55,6 +55,7 @@ width: 100%; /* Full width */
   box-shadow: 0px 0px 5px 2px black;
   
 }
+
 .bann {
   width: 100%;
   padding: 50px;
@@ -142,16 +143,6 @@ label {
   border-radius: 4px;
   cursor: pointer;
   float: center;
-}
-#mod{
-  background-color: #1a84ca;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: center;
-  margin-bottom: 10px;
 }
 
 /* Style the container */
