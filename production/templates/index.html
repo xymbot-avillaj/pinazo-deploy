@@ -13,7 +13,7 @@
     <title>
         Admin
     </title>
-        <div id="mySidenav" class="topav">
+    <div id="mySidenav" class="topav">
         <a href="{% url 'index' %}">Producción</a>
         <a href="{% url 'register' %}">Usuarios</a>
 
@@ -33,20 +33,20 @@
 
         <div class="grid grid-cols-1 mt-5 mx-7 ">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Código</label>
-            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w">
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
                 {{ form.article }}
             </div>
 
         </div>
         <div class="grid grid-cols-1 mt-5 mx-7">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Prensa</label>
-            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w">
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
                 {{ form.machine }}
             </div>
         </div>
         <div class="grid grid-cols-1 mt-5 mx-7">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Número de piezas</label>
-            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w"
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
                  type="number" placeholder="0">
                 {{ form.machine }}
             </div>
@@ -55,14 +55,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha inicio</label>
-                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w"
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
                      type="date" placeholder="Input 2">
                     {{ form.date_from }}
                 </div>
             </div>
             <div class="grid grid-cols-1">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha inicio</label>
-                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w"
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
                      type="date" placeholder="Input 2">
                     {{ form.date_to }}
                 </div>
@@ -79,7 +79,7 @@
 </div>
 <div class="w-11/12 md:w-9/12 lg:w-2/3 mt-4">
     {% block Table %}
-    <table class="w-full table-auto">
+    <table class="w-full table-fixed">
         <thead>
         <tr class="bg-primary text-gray-50 uppercase text-sm leading-normal h-12 rounded-2xl">
             <th>Código</th>
@@ -92,11 +92,11 @@
         </thead>
         {% for result in show_table %}
         <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100 ">
-            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.article}}</td>
-            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.machine}}</td>
-            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.total}}</td>
-            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.date_from}}</td>
-            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.date_to}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap son-test">{{result.article}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap son-test">{{result.machine}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap son-test">{{result.total}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap son-test">{{result.date_from}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap son-test">{{result.date_to}}</td>
             <td class="py-3 px-6 flex align-center justify-center whitespace-nowrap">
                 <a href="{% url 'update' result.id %}">
                     <svg class="fill-primary" height="20pt" viewBox="0 -1 401.52289 401" width="20pt"

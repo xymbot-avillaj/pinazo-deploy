@@ -30,7 +30,7 @@ class Production(models.Model):
     date_to = models.DateTimeField(default=datetime.now() + timedelta(hours=1))
 
 class ProductionTable(models.Model):    
-    article=models.CharField(max_length=20)
+    article=models.CharField(max_length=20 )
     machine=models.IntegerField()
     total=models.IntegerField()
     date_from=models.DateTimeField()

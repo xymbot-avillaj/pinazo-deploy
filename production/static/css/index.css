@@ -55,6 +55,33 @@ width: 100%; /* Full width */
   box-shadow: 0px 0px 5px 2px black;
   
 }
+.son-full-w select {
+  width: 100%;
+}
+.son-full-w input {
+  width: 100%;
+}
+
+.son-color-primary input {
+  color: #00A8A4;
+}
+.son-color-primary select {
+  width: #00A8A4;
+}
+.son-outline-none select{
+  outline: none;
+}
+
+.son-outline-none input{
+  outline: none;
+}
+
+.son-test  {
+  word-wrap: break-word;
+  min-width: 10px;
+  max-width: 10px;
+  color: red;
+}
 
 .bann {
   width: 100%;
