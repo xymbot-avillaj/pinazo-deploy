@@ -16,7 +16,7 @@ class Production(models.Model):
     )    
 
     # Get references
-    query = "SELECT id, article FROM pz_references" 
+    query = "SELECT id, description FROM pz_references"
     cursor = connection.cursor()
     cursor.execute(query)
     references = cursor.fetchall()    

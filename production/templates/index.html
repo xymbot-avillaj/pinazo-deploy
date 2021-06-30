@@ -2,103 +2,103 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'css/index.css' %}">
-        <title>
-            Admin
-        </title>
-        <div id="mySidenav" class="topav">
-            <a href="{% url 'index' %}">Producción</a>
-            <a href="{% url 'register' %}">Usuarios</a>
-            <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1" target="_blank">Visualizador</a>
-            <img class="log" src="{% static 'img/user1.png' %}" >
-            <span class="us"> <a href="{% url 'logout' %}"><span>{{request.user}}</span></a></span>   
-          </div>        
-    </head>
-    <body style="text-align: center;">
-        <main class="mn">
-        <div class="header">
-            <header>Producción</header>
-        </div>
-        <div id="container">
-            {% block Production %}
-            <form action="." method="POST"> {% csrf_token %}
-                <div class="row">
-                    <div class="col-25">
-                        <label>Código: </label>
-                    </div>
-                    <div class="col-75">
-                        {{ form.article }} 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label>Prensa:</label>
-                    </div>
-                    <div class="col-75" name="pieces">
-                        {{ form.machine }}
-                    </div>
-                </div>
-                <div class="row" >
-                    <div class="col-25">
-                        <label> Total de piezas:</label> 
-                    </div>
-                    <div class="col-75">
-                        {{ form.total }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label> Fecha de inicio: </label>
-                    </div>
-                    <div class="col-75">
-                        {{ form.date_from }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label> Fecha de fin: </label>
-                    </div>
-                    <div class="col-75">
-                        {{ form.date_to }} 
-                    </div>
-                </div>
-                <div class="row">
-                    <input type="submit" value="Insertar" id="sub">  
-                </div>                     
-            </form>            
-            {% endblock %} 
-        </div>
-        </main>
-        <div class="cont">
-            {% block Table %}               
-                <table id="ta" style="width:95%"  > 
-                    <tr>
-                        <th>Código</th>
-                        <th>Prensa</th>
-                        <th>Total de piezas</th>
-                        <th>Fecha de inicio</th>
-                        <th>Fecha de fin</th>
-                        <th>Modificar</th>
-                    </tr>
-                    {% for result in show_table %}
-                    <tr>
-                        <td>{{result.article}}</td>
-                        <td>{{result.machine}}</td>
-                        <td>{{result.total}}</td>
-                        <td>{{result.date_from}} </td>
-                        <td>{{result.date_to}}</td>
-                        <td><a id=mod href="{% url 'update' result.id %}">Modificar</a></td> 
-                    </tr>
-                    {% endfor%}
-                </table>                  
-            {% endblock %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <title>
+        Admin
+    </title>
+    <div id="mySidenav" class="topav">
+        <a href="{% url 'index' %}">Producción</a>
+        <a href="{% url 'register' %}">Usuarios</a>
+        <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1"
+           target="_blank">Visualizador</a>
+        <img class="log" src="{% static 'img/user1.png' %}">
+        <span class="us"> <a href="{% url 'logout' %}"><span>{{request.user}}</span></a></span>
+    </div>
+</head>
+<div class="flex items-center justify-center  mt-16 mb-8 w-11/12 md:w-10/12 lg:5/6">
+    <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-2/3">
+        <div class="flex justify-center">
+            <div class="flex">
+                <h1 class="text-gray-600 font-bold md:text-2xl text-xl mt-4">Producción</h1>
             </div>
-            <div class="bann">
-                <img src="{% static 'img/logo.jpg' %}" >
-              </div>
-    </body>
+        </div>
+
+        <div class="grid grid-cols-1 mt-5 mx-7 ">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Código</label>
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent">
+                {{ form.article }}
+            </div>
+
+        </div>
+        <div class="grid grid-cols-1 mt-5 mx-7">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Prensa</label>
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent">
+                {{ form.machine }}
+            </div>
+        </div>
+        <div class="grid grid-cols-1 mt-5 mx-7">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Número de piezas</label>
+            <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="number" placeholder="0" >
+                {{ form.machine }}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+            <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha inicio</label>
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="date" placeholder="Input 2">
+                    {{ form.date_from }}
+                </div>
+            </div>
+            <div class="grid grid-cols-1">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha inicio</label>
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent" type="date" placeholder="Input 2">
+                    {{ form.date_to }}
+                </div>
+            </div>
+        </div>
+
+        <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+            <button class='w-7/12 bg-primary hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Insertar</button>
+        </div>
+
+    </div>
+</div>
+<div class="w-11/12 md:w-9/12 lg:w-2/3 mt-4">
+    {% block Table %}
+    <table class="w-full table-auto">
+        <thead>
+        <tr class="bg-primary text-gray-50 uppercase text-sm leading-normal h-12 rounded-2xl">
+            <th>Código</th>
+            <th>Prensa</th>
+            <th>Total de piezas</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de fin</th>
+            <th>Modificar</th>
+        </tr>
+        </thead>
+        {% for result in show_table %}
+        <tr class="border-b border-gray-200 bg-gray-50  hover:bg-gray-100">
+            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.article}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap"> {{result.machine}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.total}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.date_from}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap">{{result.date_to}}</td>
+            <td class="py-3 px-6 text-center whitespace-nowrap"><a id=mod
+                                                                   href="{% url 'update' result.id %}">Modificar</a>
+            </td>
+        </tr>
+        {% endfor%}
+    </table>
+    {% endblock %}
+</div>
+<div class="bann">
+    <img src="{% static 'img/logo.jpg' %}">
+</div>
+</body>
 </html>
