@@ -171,11 +171,11 @@ body {
   }
 @media screen and (max-width: 600px) {
   .main-holder {
-    width: 70%;
+    width: 80%;
     height: auto;
   }
   #tt{
-    width: 80%; 
+    width: 100%; 
     float:center;
   }
   .i1{

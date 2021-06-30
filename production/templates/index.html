@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Actualizar" id="sub">  
+                    <input type="submit" value="Insertar" id="sub">  
                 </div>                     
             </form>            
             {% endblock %} 
@@ -91,7 +91,7 @@
                         <td>{{result.total}}</td>
                         <td>{{result.date_from}} </td>
                         <td>{{result.date_to}}</td>
-                        <td><a id=sub href="{% url 'update' result.id %}">Modificar</a></td> 
+                        <td><a id=mod href="{% url 'update' result.id %}">Modificar</a></td> 
                     </tr>
                     {% endfor%}
                 </table>                  
