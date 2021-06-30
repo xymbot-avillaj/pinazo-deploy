@@ -85,24 +85,12 @@ body {
 }
 
 .td {
-    /*word-wrap: break-word;*/
     min-width: 20px;
-    color: red;
+    color: #2c2c2c;
     overflow: hidden;
-    /*width: 200px;*/
 }
 
 
-
-.bann {
-    width: 100%;
-    padding: 50px;
-    text-align: center;
-    background-image: linear-gradient(to right, rgb(159, 204, 247), #1a84ca);
-    color: white;
-    font-size: 30px;
-    margin-top: 60px;
-}
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #form-data {
