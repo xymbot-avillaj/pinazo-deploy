@@ -51,14 +51,14 @@
         <form action="." method="POST"> {% csrf_token %}
             <div class="grid grid-cols-1 md:mt-5 mx-7 ">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold text-left">Código</label>
-                <div class="son-bg-white  rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
+                <div class="son-input  rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
                     {{ form.article }}
                 </div>
 
             </div>
             <div class="grid grid-cols-1 md:mt-5  mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold text-left">Prensa</label>
-                <div class="son-bg-white  rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
+                <div class="son-input  rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
                     {{ form.machine }}
                 </div>
             </div>
