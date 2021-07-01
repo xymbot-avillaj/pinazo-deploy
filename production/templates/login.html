@@ -7,30 +7,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="{% static 'css/user.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <!-- <script defer src="{% static 'js/login.js' %}"></script> -->
 </head>
 
 <body>
-  <main class="main-holder">
-	  <div>
-    <h1 id="login-header">Login <img src="{% static 'img/lock1.png' %}" ></h1>
-	  </div>
-    <form id="login-form" method="POST" action=""> {% csrf_token %}
-	  <div class="tt">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Usuario">
-	  </div>
-	  <div >
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Contraseña">
-	</div>
-	<div class="i1">
-      <input type="submit" value="Entrar" id="login-form-submit" class="sb">
-	</div>
-	{% for message in messages %}
-	<p id="messages">{{message}}</p>
-  {% endfor %}
-    </form>
-</main>
+
+<div class="flex items-center justify-center mt-8 md:mt-16 mb-8 w-11/12 md:w-8/12 lg:4/6">
+    <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-2/3">
+        <div class="flex justify-center">
+            <div class="">
+                <h1 class="text-gray-600 font-bold md:text-2xl text-xl mt-4">Registrar usuario</h1>
+            </div>
+        </div>
+<!--        <form method="POST" id="login-form" action=""> {% csrf_token %}-->
+        <form method="POST" id="login-form" action=""> {% csrf_token %}
+            <div class="grid grid-cols-1 md:mt-5 mx-7 ">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-light text-left">Nombre de usuario</label>
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
+                    <input class="bg-white" type="text" id="username-field" name="username" >
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:mt-5 mx-7 ">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-light text-left">Contraseña</label>
+                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
+                    <input type="password" name="password" id="password-field" >
+                </div>
+            </div>
+            <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+                <button type="submit" value="Entrar" id="login-form-submit" class='w-7/12 bg-primary hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+                    Login
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!--  <main class="main-holder">-->
+<!--	  <div>-->
+<!--    <h1 id="login-header">Login <img src="{% static 'img/lock1.png' %}" ></h1>-->
+<!--	  </div>-->
+<!--    <form id="login-form" method="POST" action=""> {% csrf_token %}-->
+<!--	  <div class="tt">-->
+<!--      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Usuario">-->
+<!--	  </div>-->
+<!--	  <div >-->
+<!--      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Contraseña">-->
+<!--	</div>-->
+<!--	<div class="i1">-->
+<!--      <input type="submit" value="Entrar" id="login-form-submit" class="sb">-->
+<!--	</div>-->
+<!--	{% for message in messages %}-->
+<!--	<p id="messages">{{message}}</p>-->
+<!--  {% endfor %}-->
+<!--    </form>-->
+<!--</main>-->
 </body>
 
 </html>

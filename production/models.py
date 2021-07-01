@@ -16,7 +16,7 @@ class Production(models.Model):
     )    
 
     # Get references
-    query = "SELECT id, article FROM pz_references" 
+    query = "SELECT id, description FROM pz_references"
     cursor = connection.cursor()
     cursor.execute(query)
     references = cursor.fetchall()    
@@ -30,7 +30,7 @@ class Production(models.Model):
     date_to = models.DateTimeField(default=datetime.now() + timedelta(hours=1))
 
 class ProductionTable(models.Model):    
-    article=models.CharField(max_length=20)
+    article=models.CharField(max_length=20 )
     machine=models.IntegerField()
     total=models.IntegerField()
     date_from=models.DateTimeField()
