@@ -51,21 +51,21 @@
         <form action="." method="POST"> {% csrf_token %}
             <div class="grid grid-cols-1 md:mt-5 mx-7 ">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Código</label>
-                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
+                <div class="son-input rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
                     {{ form.article }}
                 </div>
 
             </div>
             <div class="grid grid-cols-1 md:mt-5  mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Prensa</label>
-                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
+                <div class="son-input rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none">
                     {{ form.machine }}
                 </div>
             </div>
             <div class="grid grid-cols-1 md:mt-5 mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Número de
                     piezas</label>
-                <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
+                <div class="son-input rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
                      type="number" placeholder="0">
                     {{ form.machine }}
                 </div>
@@ -75,7 +75,7 @@
                 <div class="grid grid-cols-1">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha
                         inicio</label>
-                    <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
+                    <div class="son-input rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
                          type="date" placeholder="Input 2">
                         {{ form.date_from }}
                     </div>
@@ -83,7 +83,7 @@
                 <div class="grid grid-cols-1">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha
                         inicio</label>
-                    <div class="py-2 px-3 rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
+                    <div class="son-input rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none"
                          type="date" placeholder="Input 2">
                         {{ form.date_to }}
                     </div>
