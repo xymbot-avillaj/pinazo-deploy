@@ -6,13 +6,13 @@ class Production(models.Model):
     total = models.PositiveIntegerField(default=1)    
     
     # Get machine
-    query = "SELECT id, id FROM pz_equipment WHERE id = 2" 
+    query = "SELECT id, id FROM pz_equipment"
     cursor = connection.cursor()
     cursor.execute(query)
     machines = cursor.fetchall()    
-    machine = models.IntegerField(        
+    machine = models.IntegerField(
         choices=machines,
-        default=2,               
+        default=2,
     )    
 
     # Get references
@@ -22,7 +22,7 @@ class Production(models.Model):
     references = cursor.fetchall()    
     article = models.IntegerField(        
         choices=references,
-        default= 1,               
+        default= 1,
     )
 
     # Get date and time
