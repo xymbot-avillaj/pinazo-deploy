@@ -19,7 +19,7 @@
         </button>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-        <a href="#" class="block">
+        <a href="/" class="block">
             <img class="h-8" src="{% static 'img/xymbot.png' %}" alt="Xymview">
         </a>
         <nav class="absolute md:relative left-0 top-12 md:top-0 z-20 md:flex flex-col md:flex-row md:space-x-6 font-semibold w-full md:w-auto bg-white shadow-md  md:rounded-none md:shadow-none md:bg-transparent p-6  md:p-0"
@@ -28,7 +28,7 @@
                class="text-gray-600 hover:underline  flex md:items-center md:justify-center pl-2 md:pl-0">Producción</a>
             <a href="{% url 'register' %}"
                class=" color-primary hover:underline flex font-bold md:items-center md:justify-center pl-2 md:pl-0">Usuarios</a>
-            <a href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1"
+            <a target="_blank" href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1"
                class="text-gray-600 hover:underline flex md:items-center md:justify-center pl-2 md:pl-0">Live</a>
             <a class="md:rounded-full bg-primary md:p-2 " href="{% url 'logout' %}"><span
                     class="text-white md:px-4 font-small pl-2 ">{{request.user}}</span></a>
@@ -84,17 +84,17 @@
 //We start indexing at one because CSRF_token is considered and input field
 */
 
-    //Query All input fields
-    var form_fields = document.getElementsByTagName('input')
-    form_fields[1].placeholder = 'Usuario..';
-    // form_fields[2].placeholder='Email..';
-    form_fields[2].placeholder = 'Contraseña...';
-    form_fields[3].placeholder = 'Repetir Contraseña...';
-
-
-    for (var field in form_fields) {
-        form_fields[field].className += ' form-control'
-    }
+    // //Query All input fields
+    // var form_fields = document.getElementsByTagName('input')
+    // form_fields[1].placeholder = 'Usuario..';
+    // // form_fields[2].placeholder='';
+    // form_fields[2].placeholder = '';
+    // form_fields[3].placeholder = '';
+    //
+    //
+    // for (var field in form_fields) {
+    //     form_fields[field].className += ' form-control'
+    // }
 </script>
 
 </body>
