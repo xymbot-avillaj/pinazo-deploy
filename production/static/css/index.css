@@ -83,6 +83,20 @@ body {
     outline: none;
 }
 
+.son-input input{
+    background-color: transparent !important;
+    padding: .5em;
+    border-radius: .5em;
+}
+.son-input select{
+    background-color: transparent !important;
+    padding: .5em;
+    border-radius: .5em;
+
+
+
+}
+
 .td {
     min-width: 20px;
     color: #2c2c2c;
