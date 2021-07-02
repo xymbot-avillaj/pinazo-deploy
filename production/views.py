@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import logging
 from .models import *
 from .forms import *
 from django.contrib.auth.forms import UserCreationForm
@@ -6,15 +7,20 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+logger = logging.getLogger(__name__)
+
 @login_required(login_url='login')
 def register_view(request):
     form = UserCreationForm()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
+        logger.error(form)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Usuario ' + user+ ' creado')
+        else:
+            messages.success(request, 'El usuario no se ha podido crear correctamente, verifica que las contraseñas coinciden y su longitud es mayor de 8.')
     context = {'form': form}
     return render(request, ["register.html"], context)
 
@@ -24,7 +30,7 @@ def login_view(request):
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
-            password =request.POST.get('password')
+            password = request.POST.get('password')
 
             user = authenticate(request, username=username, password=password)
 

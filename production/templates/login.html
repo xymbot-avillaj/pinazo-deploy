@@ -37,6 +37,9 @@
                     <input type="password" name="password" id="password-field" >
                 </div>
             </div>
+            {% for message in messages %}
+            	<p class="py-2 px-8 text-red-500" id="messages">{{message}}</p>
+            {% endfor %}
             <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
                 <button type="submit" value="Entrar" id="login-form-submit" class='w-7/12 bg-primary hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
                     Login
