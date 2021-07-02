@@ -38,7 +38,7 @@ def login_view(request):
                 login(request, user)
                 return redirect('index')
             else:
-                messages.info(request, 'Username OR password is incorrect')
+                messages.info(request, 'Usuario o contraseña incorrectos. Por favor, vuelva a intentarlo')
         context = {}
         return render(request, 'login.html', context)    
 
