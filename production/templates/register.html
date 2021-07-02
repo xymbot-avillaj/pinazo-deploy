@@ -28,7 +28,8 @@
                class="text-gray-600 hover:underline  flex md:items-center md:justify-center pl-2 md:pl-0">Producción</a>
             <a href="{% url 'register' %}"
                class=" color-primary hover:underline flex font-bold md:items-center md:justify-center pl-2 md:pl-0">Usuarios</a>
-            <a target="_blank" href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1"
+            <a target="_blank"
+               href="http://pinazo-business-intelligence.westeurope.cloudapp.azure.com:3000/d/22NgU26Mk/pinazo?orgId=1"
                class="text-gray-600 hover:underline flex md:items-center md:justify-center pl-2 md:pl-0">Live</a>
             <a class="md:rounded-full bg-primary md:p-2 " href="{% url 'logout' %}"><span
                     class="text-white md:px-4 font-small pl-2 ">{{request.user}}</span></a>
@@ -64,9 +65,12 @@
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold text-left">Confirmar
                     contraseña</label>
                 <div class="son-input  rounded-lg border-2 border-primary focus:color-secondary mt-1 focus:outline-none focus:ring-2  focus:border-transparent son-full-w son-outline-none son-input">
-                    <input type="password" name="contraseña">
+                    <input type="password" name="password2">
                 </div>
             </div>
+            {% for message in messages %}
+                <p class="py-2 px-8 text-red-500 text-left" id="messages">{{message}}</p>
+            {% endfor %}
             <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
                 <button type="submit" value="Registrar usuario"
                         class='w-7/12 bg-primary hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
